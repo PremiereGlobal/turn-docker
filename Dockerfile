@@ -19,7 +19,7 @@ ENV GROUP=turnserver
 ENV TURN_REALM="turn.sip.domain.com"
 ENV PORT=443
 ENV MIN_PORT=16384
-ENV MAX_PORT=17232
+ENV MAX_PORT=65535
 
 ADD run.sh /run.sh
 RUN chmod +x /run.sh
