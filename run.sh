@@ -30,7 +30,7 @@ echo lt-cred-mech >> /etc/turnserver.conf
 echo min-port=$MIN_PORT >> /etc/turnserver.conf
 echo max-port=$MAX_PORT >> /etc/turnserver.conf
 
-sh -c "turnadmin -a -u user -p pass -r ${TURN_REALM}"
+sh -c "turnadmin -a -u ${TURN_USER} -p ${TURN_PASS} -r ${TURN_REALM}"
 
 set +x
 
