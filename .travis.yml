@@ -19,9 +19,10 @@ after_success:
 notifications:
   slack:
     template:
-      - "Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of %{repository_slug}@%{branch}> by %{author} %{result} in %{duration}"
-      - "Image Name: readytalk/turn-docker:3.2.%{build_number}-%{commit}"
-    on_success: always # default: always
-    on_failure: always # default: always
+    - Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of %{repository_slug}@%{branch}>
+      by %{author} %{result} in %{duration}
+    - 'Image Name: readytalk/turn-docker:3.2.%{build_number}-%{commit}'
+    on_success: always
+    on_failure: always
     rooms:
-      - secure: iHclNGXQuE5hKct86ewvLSb/q5M/BeFwjMUwQWJ2Knbi1tgORhw7F81wQhgtpSKrnkB+yScBlpI84mGHXXFFoGUXO925/Ed086WCFwbVb/1SXWJQMuuRuH2H6S7bMV9dCMr/X4hSBMfk7MUhI17BPd/OgHwtyoH8mdI1BJ1HeCmNG3EQuf00zNcbgUIeMZXYpPXz8TuWuSqK0i1uZRES3D6I8MKBH92djVwMaK3cUJ85DKn8/oAnnda7xef+WVHad0/NqwG4Qo0SpF+xPcxMof9nqvsHUmIXuYhJDRqJXOcWdZDXUxHT2y4vDYwQvywLyShCUfylxsEJRXJVJevq6UGvqTiK/2EV0iom+ptHSNa9RFzk/N9rgWr+sPLCec4xtWK4uP6zFdnx4/KFDCV+t58kOjx8U9P83NhP7N/7JH6kIsKwcrLYx84+7yFlEbjcnDcy5K5svEy58ikNeftgKxV82+/KSN3u82OQorQQmNm0R1cPVONR8DvD09pj0+t8f0Sxsapht7/Vqpga6bP15UJ+ZizHR5E6RzAjKBRqPlLJEF7MKcGqLCCDndqR/5Vrqkuxo8t0zgcV7hcOuCw+SkXSX2vqxX3v7jNoMKzogkstfc8yL2RoKB97gyF+HBMGSHL10jyfHOIkh4AnJLeW0OF9Vx2p1yzHK95JvFsMIhs=
+      secure: BHY07LYF8GF4EbDhWq0Z3o3/TI7bg1hPz9Xvf7jhExUc10euHC8GMt4gO5Nb920INaw31s/V7Dsh4X+glif49F/PRWDOtPx20Ii/BX0ANsAlAuKfqu5ft5H3t4MZZbyUUwK7Zqye8wOShGucZgYdHXeHnSHb9V9jskopIqGFKUI2kSCdYEze3OQAghcB+xqZ89JYSYLyihwVj+JkaAjOvZqcBtvyLwy27FCOY26g9pHMQWd2teGMC81lGKGzPqBAAsUu2hpxZVcQ4s2zzMxc0SbMsDxAWUCdpb6WRTdtpBTzG5X8xLf/4AfEjgGAMUc+ANTC/Z0jQRUl5HjEBuHZv9zhCVbVqSi78o/Hmd+um+xpd3U7X7L2zMmeEDIAWce6GExgW7H/byFSILXB9KpNiU4jdr7c0h26bwCyd2CCfqw6d0B1GQy6/cRzjZs9OrKEM8CWjAtgmqnGyyrCxw4Puj77M9JD26+iAZ7Vb0i+UxPweorr1NVkkRSkvK8g3/EqCJFrkYL/ewfKymWcJe2eA2yedxfSJ5vJCgLLWFOdC85NCZrB4emtxLNZhPbpEWDAbNcIuCsOWlUR4963YL1LdoeXPP2KD05kQoWLE4149aRISMarclaEO3wi6iznyTCN/4lOR7x8R7zUCiqlgfXJ2jaHmPXCac5cN2v78IKHTb0=
