@@ -30,7 +30,10 @@ echo lt-cred-mech >> /etc/turnserver.conf
 echo min-port=$MIN_PORT >> /etc/turnserver.conf
 echo max-port=$MAX_PORT >> /etc/turnserver.conf
 
-sh -c "turnadmin -a -u ${TURN_USER} -p ${TURN_PASS} -r ${TURN_REALM}"
+# If username and password are set, then add them to the the turn db using turnadmin
+if [ ! -z "$TURN_USER" -a ! -z "$TURN_PASS" ]; then
+    sh -c "turnadmin -a -u ${TURN_USER} -p ${TURN_PASS} -r ${TURN_REALM}"
+fi
 
 set +x
 
