@@ -3,19 +3,9 @@ dist: trusty
 language: python
 services:
 - docker
-env:
-  global:
-  - IMAGE_NAME=turn-docker
-  - COMMIT=${TRAVIS_COMMIT::7}
-  - MAJ_VERSION="3.2"
 install: true
 script:
-- docker build -t readytalk/$IMAGE_NAME:$MAJ_VERSION.$TRAVIS_BUILD_NUMBER-$COMMIT
-  .
-- docker images
-after_success:
-- docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-- docker push readytalk/$IMAGE_NAME:$MAJ_VERSION.$TRAVIS_BUILD_NUMBER-$COMMIT
+- "./build.sh"
 notifications:
   slack:
     template:
