@@ -12,6 +12,7 @@ RUN chmod 755 /usr/bin/dumb-init
 
 ADD run.sh /run.sh
 RUN chmod +x /run.sh
+RUN touch /env.sh
 
 ENTRYPOINT ["/run.sh"]
 CMD ["/usr/bin/turnserver","-v","--no-cli","-l","stdout","-f","-c","/etc/turnserver.conf"]

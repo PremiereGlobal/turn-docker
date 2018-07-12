@@ -46,20 +46,21 @@ for var in ${!COTURN_*}; do
   if [[ $var == COTURN_* ]]; then
     var2=${var,,} #lowercase
     var3=${var2//_/-}
+    var4=${var3#coturn-*}
     if [[ "${!var}" == "true" ]]; then
-      echo ${var3} >> ${CONF_FILE}
+      echo ${var4} >> ${CONF_FILE}
       continue
     fi
     if [[ "${!var}" == "false" ]]; then
       continue
     fi
     if [[ ${!var} =~ ^-?[0-9]+$ ]]; then
-      echo "${var3}=${!var}" >> ${CONF_FILE}
+      echo "${var4}=${!var}" >> ${CONF_FILE}
     else
-      echo "${var3}=${!var}" >> ${CONF_FILE}
+      echo "${var4}=${!var}" >> ${CONF_FILE}
     fi
   fi
 done
 
-
+echo "${@}"
 exec "${@}"
