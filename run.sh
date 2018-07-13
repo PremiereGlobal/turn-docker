@@ -57,7 +57,7 @@ for var in ${!COTURN_*}; do
     if [[ ${!var} =~ ^-?[0-9]+$ ]]; then
       echo "${var4}=${!var}" >> ${CONF_FILE}
     else
-      echo "${var4}=${!var}" >> ${CONF_FILE}
+      echo "${var4}=\"${!var}\"" >> ${CONF_FILE}
     fi
   fi
 done
