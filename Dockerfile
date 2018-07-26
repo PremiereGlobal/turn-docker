@@ -3,25 +3,17 @@ FROM debian:buster-slim
 RUN apt-get update && apt-get install -y \
       coturn \
       curl \
+      netcat \
     && apt-get clean && rm -rf /var/lib/apt/lists
 
-
-ENV DESC=coturn
-ENV NAME=coturn
-ENV PROCNAME=turnserver
-ENV DAEMON=/usr/bin/turnserver
-ENV DAEMON_ARGS="-c /etc/turnserver.conf -o -v"
-ENV PIDFILE_DIR=/var/run
-ENV PIDFILE=/var/run/$PROCNAME.pid
-ENV SCRIPTNAME=/etc/init.d/$NAME
-ENV USER=turnserver
-ENV GROUP=turnserver
-ENV TURN_REALM="turn.sip.domain.com"
-ENV PORT=443
-ENV MIN_PORT=16384
-ENV MAX_PORT=65535
+#setup dumb-init
+RUN curl -k -L https://github.com/Yelp/dumb-init/releases/download/v1.2.1/dumb-init_1.2.1_amd64 > /usr/bin/dumb-init
+RUN chmod 755 /usr/bin/dumb-init
 
 ADD run.sh /run.sh
 RUN chmod +x /run.sh
+RUN touch /env.sh
 
-CMD /run.sh
+ENTRYPOINT ["/run.sh"]
+CMD ["/usr/bin/turnserver","-v","--no-cli","-l","stdout","-f","-c","/etc/turnserver.conf"]
+
