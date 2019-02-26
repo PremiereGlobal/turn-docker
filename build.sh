@@ -2,9 +2,9 @@
 
 docker build -t turn-docker:latest .
 
-VER_TMP=$(docker run --rm --entrypoint="" -it turn-docker:latest /usr/bin/turnserver --version | grep "Version Coturn-" | awk '{print $2}' | awk -F "-" '{print $2}' 2> /dev/null)
+VER_TMP=$(docker run --rm --entrypoint="" -it turn-docker:latest /usr/bin/dpkg -s coturn | grep version -i | awk '{$2=$2};2'|awk '{print $2}' |awk -F '-' '{print $1}' 2> /dev/null)
 echo "--------------==="
-echo $VER_TMP
+echo "\"${VER_TMP}\""
 echo "--------------==="
 
 GIT_HASH=$(git rev-parse HEAD)
