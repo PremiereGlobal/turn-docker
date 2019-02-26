@@ -15,5 +15,5 @@ RUN chmod +x /run.sh
 RUN touch /env.sh
 
 ENTRYPOINT ["/run.sh"]
-CMD ["/usr/bin/turnserver","-v","--no-cli","-l","stdout","-f","-c","/etc/turnserver.conf"]
+CMD ["/usr/bin/turnserver","-v","-l","stdout","-f","-c","/etc/turnserver.conf"]
 
